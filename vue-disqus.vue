@@ -8,7 +8,10 @@
       shortname: {
         type: String,
         required: true
-      }
+      },
+      identifier: {
+        type: String,
+      },
     },
     mounted () {
       if (window.DISQUS) {
@@ -19,20 +22,22 @@
     },
     methods: {
       reset (dsq) {
-        const self = this
         dsq.reset({
           reload: true,
-          config: function () {
-            this.page.identifier = (self.$route.path || window.location.pathname)
-            this.page.url = self.$el.baseURI
+          config: () => {
+            if (!this.identifier) {
+              this.page.identifier = (this.$route.path || window.location.pathname)
+            }else {
+              this.page.identifier = this.identifier
+            }
+            this.page.url = this.$el.baseURI
           }
         })
       },
       init () {
-        const self = this
-        window.disqus_config = function() {
-          this.page.url = (self.$route.path || window.location.pathname)
-          this.page.url = self.$el.baseURI
+        window.disqus_config = () => {
+          this.page.url = (this.$route.path || window.location.pathname)
+          this.page.url = this.$el.baseURI
         }
         setTimeout(() => {
           let d = document

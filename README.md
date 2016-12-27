@@ -10,7 +10,7 @@
 $ npm install vue-disqus
 ```
 
-> For Vue 1.* use [v1.0.2](https://github.com/ktquez/vue-disqus/tree/v1.0.2) - `npm install --save vue-disqus@1.0.2` 
+> For Vue 1.* use [v1.0.2](https://github.com/ktquez/vue-disqus/tree/v1.0.2) - `npm install --save vue-disqus@1.0.2`
 
 ## Using in `.vue` files
 ##### 2.) Add the component disqus
@@ -18,7 +18,7 @@ $ npm install vue-disqus
 <template>
   // omited
   <div class="comments">
-    <disqus shortname="your_shortname_disqus"></disqus>
+    <disqus shortname="your_shortname_disqus" identifier="opcional_page_identifier"></disqus>
   </div>
 </template>
 
@@ -64,5 +64,3 @@ Prop           | Data Type  | required  | Description
 ## License
 
 [MIT](http://opensource.org/licenses/MIT)
-
-
